@@ -35,18 +35,4 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontWeight: 'bold',
   },
-  memoListItem: {
-    backgroundColor: '#ffffff',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingVertical: 16,
-    paddingHorizontal: 19,
-    alignItems: 'center',
-    borderBottomWidth: 1,
-    borderColor: 'rgba(0,0,0,0.15)',
-  },
-  memoListItemTitle: {
-    fontSize: 16,
-    lineHeight: 32,
-  },
 });
