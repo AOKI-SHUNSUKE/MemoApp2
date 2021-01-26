@@ -15,13 +15,14 @@ export default function CircleButton(props) {
 
 CircleButton.propTypes = {
   style: shape(),
-  name: string.isRequired,
+  name: string,
   onPress: func,
 };
 
 CircleButton.defaultProps = {
   style: null,
   onPress: null,
+  name: 'plus',
 };
 
 const styles = StyleSheet.create({
