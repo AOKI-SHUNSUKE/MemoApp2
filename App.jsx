@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
-import firebase from "firebase";
+import firebase from 'firebase';
 
 import LogInScreen from './src/screens/LoginScreen';
 import SignUpScreen from './src/screens/SignUpScreen';
@@ -10,6 +10,8 @@ import MemoCreateScreen from './src/screens/MemoCreateScreen';
 import MemoEditScreen from './src/screens/MemoEditScreen';
 import MemoDetailScreen from './src/screens/MemoDetailScreen ';
 import { firebaseConfig } from './env';
+
+require('firebase/firestore');
 
 const Stack = createStackNavigator();
 
