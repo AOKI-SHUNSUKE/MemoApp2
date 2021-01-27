@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, Alert, Text } from 'react-native';
+import {
+  View, StyleSheet, Alert, Text,
+} from 'react-native';
 import firebase from 'firebase';
 import CircleButton from '../components/CircleButton';
 import MemoList from '../components/MemoList';
@@ -22,6 +24,7 @@ export default function MemoListScreen(props) {
     const { currentUser } = firebase.auth();
     let unsubscribe = () => {};
     if (currentUser) {
+      setLoading(true);
       const ref = db.collection(`users/${currentUser.uid}/memos`).orderBy('updatedAt', 'desc');
       unsubscribe = ref.onSnapshot((snapshot) => {
         const userMemos = [];
@@ -35,8 +38,10 @@ export default function MemoListScreen(props) {
           });
         });
         setMemos(userMemos);
+        setLoading(false);
       }, (error) => {
         console.log(error);
+        setLoading(false);
         Alert.alert('データの読み込みに失敗しました。');
       });
     }
@@ -46,6 +51,7 @@ export default function MemoListScreen(props) {
   if (memos.length === 0) {
     return (
       <View style={emptyStyles.container}>
+        <Loading isLoading={isLoading} />
         <View styles={emptyStyles.inner}>
           <Text style={emptyStyles.title}>最初のメモを作成しよう！</Text>
           <Button
@@ -59,7 +65,6 @@ export default function MemoListScreen(props) {
   }
   return (
     <View style={styles.container}>
-      <Loading isLoading={isLoading} />
       <MemoList memos={memos} />
       <CircleButton
         name="plus"
