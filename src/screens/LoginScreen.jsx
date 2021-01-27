@@ -12,7 +12,7 @@ export default function LogInScreen(props) {
   const [password, setPassword] = useState('');
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
+    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         navigation.reset({
           index: 0,
@@ -20,7 +20,8 @@ export default function LogInScreen(props) {
         });
       }
     });
-  });
+    return unsubscribe;
+  }, []);
 
   function handlePress() {
     firebase.auth().signInWithEmailAndPassword(email, password)

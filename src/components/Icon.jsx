@@ -8,6 +8,7 @@ import selection from '../../assets/fonts/selection.json';
 
 export default function Icon(props) {
   const [fontLoaded] = useFonts({ icomoon });
+  // eslint-disable-next-line react/prop-types
   const { name, size, color } = props;
   const CustomIcon = createIconSetFromIcoMoon(selection);
   if (!fontLoaded) {
