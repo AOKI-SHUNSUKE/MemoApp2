@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, Alert } from 'react-native';
-import firebase from "firebase";
+import firebase from 'firebase';
 import CircleButton from '../components/CircleButton';
 import MemoList from '../components/MemoList';
 import LogOutButton from '../components/LogOutButton';
